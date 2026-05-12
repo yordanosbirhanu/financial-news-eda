@@ -207,3 +207,15 @@ Yordanos Birhanu
 # License
 
 This project is developed for educational and research purposes.
+## Task 2: Quantitative Analysis
+
+In this section, I implemented technical analysis using TA-Lib to extract market signals from financial data.
+
+### Technical Indicators Used:
+- Simple Moving Average (SMA 20 & 50)
+- Relative Strength Index (RSI)
+- MACD (Moving Average Convergence Divergence)
+- Bollinger Bands
+
+### Objective:
+To analyze stock trends, momentum, and volatility using quantitative indicators.
