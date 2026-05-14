@@ -1,21 +1,20 @@
-# Financial News Exploratory Data Analysis (EDA)
+# Financial News and Stock Market Analysis
 
 ## Project Overview
 
-This project focuses on Exploratory Data Analysis (EDA) of a financial news dataset. The objective is to analyze textual and temporal patterns in financial news headlines using Python, data analysis libraries, and Natural Language Processing (NLP) techniques.
+This project analyzes the relationship between financial news sentiment and stock market behavior using Exploratory Data Analysis (EDA), technical analysis indicators, and statistical correlation methods.
 
-The project includes:
+The project is divided into three major tasks:
 
-* Descriptive statistical analysis
-* Publisher activity analysis
-* Keyword and topic extraction
-* Time series analysis of news publication frequency
-* Data visualization
-* GitHub version control and CI/CD workflow setup
+- Task 1: Exploratory Data Analysis (EDA) of financial news
+- Task 2: Quantitative stock analysis using TA-Lib and PyNance
+- Task 3: Correlation analysis between news sentiment and stock price movements
+
+The project uses Python, Pandas, NLP techniques, TA-Lib, and statistical analysis to explore financial news trends and their impact on stock returns.
 
 ---
 
-# Repository Structure
+# Project Structure
 
 ```text
 financial-news-eda/
@@ -24,62 +23,302 @@ financial-news-eda/
 │   └── workflows/
 │       └── unittests.yml
 │
-├── notebooks/
-│   └── EDA.ipynb
-│
 ├── data/
-│   └── news.csv
+│   ├── raw/
+│   └── processed/
+│
+├── notebooks/
+│   ├── task1_eda.ipynb
+│   ├── task2_quantitative_analysis.ipynb
+│   └── task3_sentiment_correlation.ipynb
+│
+├── src/
 │
 ├── requirements.txt
 ├── README.md
+└── .gitignore
 ```
-
----
-
-# Task-1 Objectives
-
-The following tasks were completed:
-
-* Created GitHub repository
-* Created `task-1` branch
-* Configured Python virtual environment
-* Added `requirements.txt`
-* Configured GitHub Actions CI/CD workflow
-* Performed Exploratory Data Analysis (EDA)
-* Conducted text analysis using NLP techniques
-* Performed publisher analysis
-* Conducted time-series analysis of publication frequency
-* Created data visualizations
-* Used descriptive Git commit messages following Conventional Commits
 
 ---
 
 # Technologies Used
 
-## Programming Language
-
-* Python 3.11
-
-## Libraries
-
-* pandas
-* numpy
-* matplotlib
-* seaborn
-* scikit-learn
-* nltk
-* jupyter
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- NLTK
+- VADER Sentiment Analyzer
+- TA-Lib
+- PyNance
+- Scikit-learn
+- Git & GitHub
+- GitHub Actions
 
 ---
 
-# Environment Setup
+# Task 1: Exploratory Data Analysis (EDA)
+
+## Objective
+
+The objective of Task 1 was to explore and understand the financial news dataset using descriptive statistics, NLP techniques, and time-series analysis.
+
+---
+
+## Activities Performed
+
+### Environment and Version Control Setup
+
+- Created GitHub repository
+- Created `task-1` branch
+- Configured Python virtual environment
+- Added `requirements.txt`
+- Configured GitHub Actions CI/CD workflow
+- Used descriptive Git commit messages
+
+---
+
+## Descriptive Statistics
+
+The following analyses were performed:
+
+- Headline character length distribution
+- Average headline length
+- Article counts per publisher
+- Publication trends over time
+- Missing value analysis
+
+---
+
+## Text Analysis and Topic Modeling
+
+Natural Language Processing (NLP) techniques were used to identify important keywords and recurring topics in financial headlines.
+
+Methods used:
+
+- CountVectorizer
+- TF-IDF
+- Word frequency analysis
+
+Common financial themes identified included:
+
+- Earnings reports
+- FDA approvals
+- Price target changes
+- Market forecasts
+- Stock upgrades and downgrades
+
+---
+
+## Time Series Analysis
+
+Publication frequency was analyzed over time to identify:
+
+- News volume spikes
+- Daily publication trends
+- Publishing behavior during major market events
+
+Publishing hours were also analyzed to determine peak news release times.
+
+---
+
+## Publisher Analysis
+
+The most active publishers were identified and compared.
+
+Additional analysis included:
+
+- Publisher contribution frequency
+- Extraction of email domains from publisher names
+- Organizational activity patterns
+
+---
+
+## Key Visualizations
+
+Task 1 included multiple visualizations such as:
+
+- Headline length distribution
+- Top publishers bar chart
+- News publication frequency over time
+- Word frequency visualization
+
+---
+
+# Task 2: Quantitative Analysis Using TA-Lib and PyNance
+
+## Objective
+
+The objective of Task 2 was to analyze stock market behavior using technical indicators and financial metrics.
+
+---
+
+## Data Preparation
+
+The stock datasets were loaded and cleaned using Pandas.
+
+Steps included:
+
+- Data type correction
+- Missing value handling
+- Date formatting
+- Sorting by trading date
+
+The following stock datasets were analyzed:
+
+- AAPL
+- AMZN
+- GOOG
+- META
+- MSFT
+
+---
+
+## Technical Indicators Computed
+
+### Moving Averages
+
+- Simple Moving Average (SMA)
+- Exponential Moving Average (EMA)
+
+Multiple window sizes were analyzed to identify trend direction.
+
+---
+
+### Relative Strength Index (RSI)
+
+RSI was used to identify:
+
+- Overbought conditions
+- Oversold conditions
+
+---
+
+### MACD (Moving Average Convergence Divergence)
+
+MACD analysis was used to identify:
+
+- Momentum shifts
+- Trend reversals
+- Bullish and bearish signals
+
+---
+
+## Financial Metrics with PyNance
+
+PyNance was used to compute additional financial metrics beyond standard technical indicators.
+
+---
+
+## Visualizations
+
+Task 2 visualizations included:
+
+- Closing prices with SMA and EMA overlays
+- RSI charts
+- MACD plots
+- Trend visualization charts
+
+---
+
+# Task 3: Correlation Between News Sentiment and Stock Movement
+
+## Objective
+
+The objective of Task 3 was to investigate the relationship between financial news sentiment and daily stock returns.
+
+---
+
+## Date Alignment
+
+News publication dates were aligned with stock trading days.
+
+Special handling was implemented for:
+
+- Weekends
+- Holidays
+- Non-trading days
+
+News articles published outside trading days were aligned to the next valid trading day.
+
+---
+
+## Sentiment Analysis
+
+Sentiment analysis was performed using the VADER sentiment analyzer from NLTK.
+
+### Why VADER?
+
+VADER was selected because:
+
+- It performs well on short text
+- It is effective for headline sentiment analysis
+- It generates normalized sentiment scores between -1 and +1
+
+Each headline received a compound sentiment score.
+
+---
+
+## Daily Stock Returns
+
+Daily stock returns were calculated using:
+
+\[
+\frac{Close_t - Close_{t-1}}{Close_{t-1}} \times 100
+\]
+
+This allowed direct comparison between sentiment and market performance.
+
+---
+
+## Correlation Analysis
+
+The following analyses were performed:
+
+- Average daily sentiment calculation
+- Pearson correlation analysis
+- Scatter plot visualization
+- Sentiment category analysis
+
+Days were classified as:
+
+- Positive
+- Neutral
+- Negative
+
+Average daily returns were compared across these sentiment categories.
+
+---
+
+## Key Findings
+
+The analysis identified weak-to-moderate relationships between financial news sentiment and stock returns depending on the company analyzed.
+
+Positive news sentiment generally corresponded with positive stock returns, though the relationship was not consistently strong across all stocks.
+
+---
+
+## Limitations
+
+Several limitations were identified:
+
+- Financial markets are influenced by many external factors
+- News sentiment effects may appear with delays
+- Headlines may not fully represent article meaning
+- Sentiment models may misinterpret financial language
+
+---
+
+# How to Run the Project
 
 ## Clone Repository
 
 ```bash
-git clone <repository_link>
-cd financial-news-eda
+git clone <your-repository-url>
 ```
+
+---
 
 ## Create Virtual Environment
 
@@ -90,7 +329,16 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
-## Install Dependencies
+### Linux/Mac
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+## Install Requirements
 
 ```bash
 pip install -r requirements.txt
@@ -98,124 +346,46 @@ pip install -r requirements.txt
 
 ---
 
-# Running the Notebook
-
-Start Jupyter Notebook:
+## Run Jupyter Notebook
 
 ```bash
 jupyter notebook
 ```
 
-Open:
-
-```text
-notebooks/EDA.ipynb
-```
+Open notebooks from the `notebooks/` directory.
 
 ---
 
-# Exploratory Data Analysis
+# Git Workflow
 
-The notebook includes the following analyses:
+Branches used:
 
-## 1. Descriptive Statistics
+- `main`
+- `task-1`
+- `task-2`
+- `task-3`
 
-* Headline length distribution
-* Statistical summary of text length
-* Publisher article counts
+Development followed Git best practices using:
 
-## 2. Publisher Analysis
-
-* Most active publishers
-* Publisher contribution comparison
-* Email domain extraction and analysis
-
-## 3. Text Analysis
-
-* Common keyword extraction
-* TF-IDF and CountVectorizer analysis
-* Topic identification from financial headlines
-
-## 4. Time Series Analysis
-
-* Publication frequency over time
-* Daily news volume trends
-* Publishing hour analysis
-* Spike identification during major market events
+- Pull Requests (PR)
+- Feature branches
+- Descriptive commit messages
+- Continuous Integration with GitHub Actions
 
 ---
 
-# Visualizations
+# Results Summary
 
-The notebook includes at least three visualizations:
+This project successfully:
 
-1. Publisher activity bar chart
-2. News publication frequency over time
-3. Headline keyword frequency visualization
-
----
-
-# GitHub Actions CI/CD
-
-The project uses GitHub Actions for Continuous Integration.
-
-Workflow file location:
-
-```text
-.github/workflows/unittests.yml
-```
-
-The workflow automatically:
-
-* Checks repository updates
-* Sets up Python environment
-* Installs dependencies from `requirements.txt`
-
----
-
-# Example Commit Messages
-
-Conventional commit examples used in this project:
-
-```bash
-feat: add exploratory data analysis notebook
-feat: add publisher analysis visualization
-feat: implement topic modeling using CountVectorizer
-ci: configure github actions workflow
-docs: update project README
-```
-
----
-
-# Key Insights
-
-Some important findings from the analysis include:
-
-* Certain publishers contribute significantly more financial news articles.
-* News publication frequency changes over time and may spike around important financial events.
-* Common financial topics include earnings reports, market forecasts, FDA approvals, and stock price targets.
-* Publishing activity varies depending on the time of day.
+- Explored financial news datasets using EDA
+- Computed technical indicators using TA-Lib
+- Applied NLP-based sentiment analysis
+- Investigated relationships between sentiment and stock movement
+- Visualized stock market trends and sentiment correlations
 
 ---
 
 # Author
 
 Yordanos Birhanu
-
----
-
-# License
-
-This project is developed for educational and research purposes.
-## Task 2: Quantitative Analysis
-
-In this section, I implemented technical analysis using TA-Lib to extract market signals from financial data.
-
-### Technical Indicators Used:
-- Simple Moving Average (SMA 20 & 50)
-- Relative Strength Index (RSI)
-- MACD (Moving Average Convergence Divergence)
-- Bollinger Bands
-
-### Objective:
-To analyze stock trends, momentum, and volatility using quantitative indicators.
